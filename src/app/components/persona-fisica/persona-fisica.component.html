@@ -1,0 +1,269 @@
+<div align="center" *ngIf="cargando">
+
+  <h2>Cargando...</h2>
+  <!-- 1 -->
+  <div class="loader loader--style1" align="center" title="0">
+     <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+     <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+       s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+       c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+     <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+       C22.32,8.481,24.301,9.057,26.013,10.047z">
+       <animateTransform attributeType="xml"
+         attributeName="transform"
+         type="rotate"
+         from="0 20 20"
+         to="360 20 20"
+         dur="0.5s"
+         repeatCount="indefinite"/>
+       </path>
+     </svg>
+   </div>
+   <p>Espere por favor</p>
+ </div>
+ <hr>
+
+  <div class="row">
+
+  <div class="col" *ngIf="!cargando">
+   
+    <div class="card shadow-sm animated  fadeIn fast"  *ngIf="!cargando">
+        <h4 class="card-header text-center">Score</h4>
+        <div class="card-body">
+            <img class="img-fluid" src={{score_imagen}} />
+          </div>
+          <div class="card-footer text-center">
+             <h4> {{score}}</h4>
+            </div>
+      </div>
+
+  </div>
+
+  <div class="col" *ngIf="!cargando">
+
+      <div class="card shadow-sm animated  fadeIn fast"  *ngIf="!cargando">
+          <h5 class="card-header text-center">Rango Socioeconomico</h5>
+          <div class="card-body text-center">
+              <img src="assets/rangos/{{rango_socioeconomico}}.jpg" width="140" height="130" alt="">
+            </div>
+        </div>
+
+  </div>
+
+ </div>
+ 
+ <br>
+ <hr>
+<div class="row">
+
+   
+  <div class="card-group">
+
+    <div class="card shadow-sm animated  fadeIn fast"  *ngIf="!cargando">
+        <h4 class="card-header text-center">Existencia Física</h4>
+      <div class="card-body">     
+        <p class="card-text">
+        <b>Apellido y Nombre:</b> {{persona.ape_nom}}<br/>
+        <b>Sexo:</b> {{persona.sexo}}<br/>
+        <b>DNI:</b> {{persona.nume_docu}}<br/>
+        <b>Cuil:</b> {{persona.cdi_codigo_de_identificacion}}<br/>
+        <b>Tipo DNI:</b> {{persona.tipo_docu}}<br/>
+        <b>Fecha Nacimiento:</b> {{persona.fecha_nacimiento}}<br/>
+        <b>Clase:</b> {{persona.clase}}<br/>        
+      </div>
+    </div>
+
+    <div class="card shadow-sm animated  fadeIn fast"  *ngIf="!cargando">
+        <!-- <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png"
+        class="ml-3 mt-3 rounded-circle" style="width:60px;"> -->
+        <div class="card-body">
+          <!-- <h5 class="card-title">Nombre: {{persona.razon_social}}</h5> -->
+          <p class="card-text">
+          <b>Edad:</b> {{persona.edad}}<br/>
+          <b>Dirección:</b> {{persona.direc_calle}}<br/>
+          <b>Departamento:</b> {{persona.departamento}}<br/>
+          <b>Provincia:</b> {{persona.provincia}}<br/>
+          <b>Estado Civil:</b> {{persona.estado_civil}}<br/>
+          <b>Apellido Materno:</b> {{persona.apellido_materno}}<br/>
+          <b>Fallecido</b> {{persona.fallecido}}<br/>
+          
+          <!-- <p class="card-text"><small class="text-muted">Provincia: {{persona.provincia}}</small></p> -->
+    
+          <!-- <a [routerLink]="['/personaF/', persona.nume_docu, persona.sexo]" class="btn btn-primary">
+           Ver Informe
+        </a> -->
+    
+          <!-- <button  type="button" class="btn btn-outline-primary btn-block">
+            Ver Informe...
+          </button> -->
+    
+          <!-- <a [routerLink]="['/heroe',i]"  class="btn btn-outline-primary"> Ver más Link ...</a> -->
+    
+        </div>
+      </div>
+    
+  
+  </div>
+  
+</div>
+<hr>
+<!-- Mails -->
+<div class="row">
+  <div class="col-md-6" *ngIf="!cargando && lista_emails.length > 0">
+      <h3> Mails</h3>
+      <div class="table-responsive">
+          <table class="table table-striped">
+              <thead>
+              <tr>      
+                <th>Mails</th>                   
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let eme of lista_emails | procesaLista; let i = index">
+                <td>{{lista_emails[eme].email}}</td>
+                
+                <!-- <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button>
+                  <button class="btn btn-danger" (click)="editUser(user)" style="margin-left: 20px;"> Edit</button></td> -->
+              </tr>
+              </tbody>
+            </table>
+      </div>
+  
+    </div>
+  
+</div>
+
+<hr>
+<!-- Moviles -->
+<div class="row">
+    
+  <!-- <div class="col-md-12" *ngIf="!cargando && listaMoviles.length > 0">
+        <h3> Automotores</h3>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>      
+                  <th></th>
+                  <th>Dominio</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>        
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let mov of listaMoviles | procesaLista; let i = index">
+                  <td><i class="fas fa-car"></i></td>
+                  <td>{{listaMoviles[mov].c_dominio}}</td>
+                  <td>{{listaMoviles[mov].mca_autom}}</td>
+                  <td>{{listaMoviles[mov].x_modelo}}</td>
+                </tr>
+                </tbody>
+              </table>
+        </div>
+    
+      </div> -->
+      
+<div class="col-md-12" *ngIf="!cargando && moviles.length > 0">
+
+    <p-table #dt [columns]="colsMoviles" [value]="moviles" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="caption">            
+         <div style="text-align: right">        
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Filtro" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </div>
+
+        </ng-template>
+
+      <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let col of colsMoviles">
+          {{col.header}}
+      </th>
+      <th style="width:8em"></th>
+      </tr>
+      
+      </ng-template>
+      <ng-template pTemplate="body" let-car>
+        <tr>
+          <td *ngFor="let col of colsMoviles">
+                  {{car[col.field]}}
+          </td>
+          <td>
+              <button pButton type="button" label="Click" (click)="selectCarWithButton(car)"></button>
+          </td>
+      </tr>
+      </ng-template>
+
+      <ng-template pTemplate="summary">
+          <div class="ui-helper-clearfix">
+              <button type="button" pButton icon="fa fa-file-o" iconPos="left" label="Exportar" (click)="dt.exportCSV()" style="float:left"></button>
+              <!-- <button type="button" pButton icon="fa fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button> -->
+          </div>       
+          Hay {{moviles?.length}} Autos
+      </ng-template>
+    </p-table>
+
+    </div>
+</div>
+
+<br>
+
+<!-- Capacidad Endeudamiento -->
+<div class="row">
+<div class="col" *ngIf="!cargando">
+
+    <div class="card border-success mb-3 shadow-sm animated  fadeIn fast"  *ngIf="!cargando" style="max-width: 18rem;">
+        <h5 class="card-header text-center">Estimador de Ingresos</h5>
+        <div class="card-body text-center">
+            <h1><i class="fas fa-dollar-sign fa-1x"> </i>{{capacidadEndeudamiento}}</h1>
+          </div>
+      </div>
+</div>
+</div>
+
+
+<!-- Relacion Dependencia -->
+<br>
+<hr>
+<div *ngIf="listaRelDependenciaTrabajador.length > 0 && !cargando" style="max-width: 38rem;">
+    <h3> Persona En Relacion de Dependencia</h3>
+</div>
+
+<div class="row">
+    <div class="col-sm-6" *ngIf="listaRelDependenciaTrabajador.length > 0 && !cargando">
+      <div class="card border-info mb-3" *ngFor="let traba of listaRelDependenciaTrabajador; let i = index">
+          <div class="card-header">
+              Datos Trabajador
+            </div>
+        <div class="card-body">         
+          <p class="card-text">
+              <b>CUIL:</b> {{traba.CUIL}}<br/>
+              <b>Apellido y Nombre:</b> {{traba.APELLIDO_Y_NOMBRE}}<br/>
+              <b>Código Postal:</b> {{traba.CODIGO_POSTAL}}<br/>
+              <b>Domicilio:</b> {{traba.DOMICILIO}}<br/>
+              <b>Provincia:</b> {{traba.PROVINCIA}}<br/>
+              <b>Fecha Nacimiento:</b> {{traba.FECHA_NACIMIENTO}}<br/>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6" *ngIf="listaRelDependenciaEmpleador.length > 0 && !cargando" >
+      <div class="card border-primary mb-3" *ngFor="let empleador of listaRelDependenciaEmpleador; let i = index">
+          <div class="card-header">
+              Datos Empleador
+            </div>
+        <div class="card-body">                   
+          <p class="card-text">            
+              <b>CUIT:</b> {{empleador.CUIT}}<br/>
+              <b>Razon Social:</b> {{empleador.RAZON_SOCIAL}}<br/>
+              <b>Código Postal:</b> {{empleador.CODIGO_POSTAL}}<br/>             
+              <b>Domicilio:</b> {{empleador.DOMICILIO}}<br/> 
+              <b>Localidad:</b> {{empleador.LOCALIDAD}}<br/> 
+              <b>Provincia:</b> {{empleador.PROVINCIA}}<br/>
+          <!-- <a href="#" class="btn btn-primary">Consultar</a> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- fin row -->
